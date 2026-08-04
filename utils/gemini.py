@@ -11,11 +11,11 @@ def generate_answer(context, question):
 
     if not api_key:
         raise ValueError(
-            "GOOGLE_API_KEY is missing. Configure it in .env or Streamlit Secrets."
+            "GOOGLE_API_KEY not found. Please configure it in .env or Streamlit Secrets."
         )
 
     llm = ChatGoogleGenerativeAI(
-        model="gemini-2.0-flash",
+        model="gemini-3.6-flash",
         google_api_key=api_key,
         temperature=0,
     )
@@ -23,7 +23,7 @@ def generate_answer(context, question):
     prompt = f"""
 You are a helpful PDF assistant.
 
-Answer ONLY using the information from the context below.
+Answer ONLY using the information from the provided context.
 
 If the answer is not available in the context, reply exactly:
 
@@ -40,4 +40,7 @@ Answer:
 
     response = llm.invoke(prompt)
 
-    return response.content
+    if hasattr(response, "content"):
+        return response.content
+
+    return str(response)
