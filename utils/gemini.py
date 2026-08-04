@@ -6,15 +6,12 @@ load_dotenv()
 
 
 def generate_answer(context, question):
-    """
-    Generate an answer using Google Gemini.
-    """
 
     api_key = os.getenv("GOOGLE_API_KEY")
 
     if not api_key:
         raise ValueError(
-            "GOOGLE_API_KEY not found. Please configure it in your .env file or Streamlit Secrets."
+            "GOOGLE_API_KEY is missing. Configure it in .env or Streamlit Secrets."
         )
 
     llm = ChatGoogleGenerativeAI(
@@ -26,7 +23,7 @@ def generate_answer(context, question):
     prompt = f"""
 You are a helpful PDF assistant.
 
-Use ONLY the information provided in the context.
+Answer ONLY using the information from the context below.
 
 If the answer is not available in the context, reply exactly:
 
@@ -43,7 +40,4 @@ Answer:
 
     response = llm.invoke(prompt)
 
-    if hasattr(response, "content"):
-        return str(response.content).strip()
-
-    return str(response).strip()
+    return response.content
