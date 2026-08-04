@@ -13,7 +13,7 @@ pymupdf
 google-generativeai
 pypdf
 
-faiss-cpu==1.8.0.post1
+faiss-cpu
 numpy==1.26.4
 scipy==1.13.1
 scikit-learn==1.5.2
