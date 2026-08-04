@@ -159,19 +159,6 @@ _Add screenshot here_
 
 ---
 
-## 📌 Future Improvements
-
-- Multiple PDF Support
-- PDF Export
-- Dark Mode
-- Chat History
-- Keyword Highlighting
-- Voice Input
-- OCR Support
-- User Authentication
-
----
-
 ## 👨‍💻 Author
 
 **SaiKishore P**
