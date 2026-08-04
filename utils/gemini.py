@@ -6,8 +6,9 @@ load_dotenv()
 
 
 def generate_answer(context, question):
+
     llm = ChatGoogleGenerativeAI(
-        model="gemini-3.6-flash",
+        model="gemini-2.5-flash",
         google_api_key=os.getenv("GOOGLE_API_KEY"),
         temperature=0,
     )
@@ -15,9 +16,9 @@ def generate_answer(context, question):
     prompt = f"""
 You are a helpful PDF assistant.
 
-Answer ONLY using the information from the context.
+Answer ONLY using the information from the provided context.
 
-If the answer is not in the context, reply:
+If the answer is not found in the context, reply exactly:
 "I couldn't find that information in the PDF."
 
 Context:
@@ -31,16 +32,4 @@ Answer:
 
     response = llm.invoke(prompt)
 
-    # Latest Gemini returns a list of content blocks
-    if isinstance(response.content, list):
-        text = ""
-
-        for item in response.content:
-            if isinstance(item, dict):
-                text += item.get("text", "")
-            elif hasattr(item, "text"):
-                text += item.text
-
-        return text.strip()
-
-    return str(response.content).strip()
+    return response.content
