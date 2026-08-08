@@ -2,7 +2,6 @@
 
 An AI-powered PDF Question Answering Assistant built using **Streamlit**, **LangChain**, **Google Gemini**, **ChromaDB**, and **Hugging Face Embeddings**.
 
-
 The application allows users to upload PDF documents, ask natural language questions, retrieve relevant information using Retrieval-Augmented Generation (RAG), generate document summaries, and export chat conversations.
 
 ---
