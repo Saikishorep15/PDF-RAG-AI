@@ -9,7 +9,6 @@ from utils.rag import ask_question
 from utils.statistics import get_pdf_statistics
 from utils.summary import generate_summary
 
-
 # -------------------------------------------------
 # Page Config
 # -------------------------------------------------
